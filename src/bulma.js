@@ -21,44 +21,30 @@ catch (err) {
 }
 
 
-// var modal_btn = document.querySelector("#myModal-btn");
+var btn = document.getElementsByClassName("modal-button");
+for (let i = 0; i < btn.length; i++) {
 
-// var modal = document.querySelector("#myModal");
-
-// modal_btn.addEventListener("click", (event)=>{
-
-//     modal.classList.add("is-active");
-// })
-
-
-class BulmaModal {
-    constructor(selector) {
-        this.elem = document.querySelector(selector);
-        this.close_data();
+    var modal = document.getElementById(btn[i].dataset.target);
+    try {
+        btn[i].addEventListener("click", (e) => {
+            modal.classList.toggle("is-active")
+        })
+        modal.firstElementChild.addEventListener("click", (e) => {
+            modal.classList.toggle("is-active")
+        })
+        for(let j=0; j<modal.getElementsByClassName('close').length; j++)
+        {
+            modal.getElementsByClassName('close')[j].addEventListener('click', (e) => {
+                modal.classList.toggle("is-active")
+            })
+        }
     }
-
-    show() {
-        this.elem.classList.toggle('is-active');
-    }
-
-    close_data() {
-        var modalClose = this.elem.querySelectorAll("[data-bulma-modal='close'], .modal-background");
-        var that = this;
-        modalClose.forEach(function (e) {
-            e.addEventListener("click", function () {
-
-                that.elem.classList.toggle('is-active');
-            });
-        });
+    catch (err) {
+        console.log(err)
     }
 }
 
-var btn = document.querySelector("#myModal-btn");
-var modal = new BulmaModal("#myModal");
 
-btn.addEventListener("click", function () {
-    modal.show();
-});
 
 
 
