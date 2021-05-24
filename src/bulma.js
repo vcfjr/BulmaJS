@@ -13,11 +13,7 @@ try {
     burger[0].addEventListener("click", (e) => {
 
         // toggler the class is-active class in navbar-menu
-        if (navbar[0].classList.contains("is-active")) {
-            navbar[0].classList.remove("is-active")
-        } else {
-            navbar[0].classList.add("is-active")
-        }
+        navbar[0].classList.toggle("is-active")
     })
 }
 catch (err) {
