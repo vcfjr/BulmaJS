@@ -41,6 +41,7 @@ for (let i = 0; i < btn.length; i++) {
 
         // toggler the class is-active class in modal
         btn[i].addEventListener("click", (e) => {
+            modal = document.getElementById(btn[i].dataset.target);
             modal.classList.toggle("is-active")
         })
 
